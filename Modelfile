@@ -1,0 +1,31 @@
+Inference:
+  command: python iNetwork.py
+  parameters:
+
+    -image_size:
+      type: int
+      defalut: 400
+    --content_weight:
+      type: float
+      default: 0.025
+    -style_weight:
+      type: float
+      default: 1
+    -style_scale:
+      type: float
+      default: 1.0
+    -total_variation_weight:
+      type: float
+      default: 8.5e-5
+    -num_iter:
+      type: int
+      default: 10
+    -pool_type:
+      type: string
+      default: max
+    -preserve_color:
+      type: string
+      default: False
+    -min_improvement:
+      type: float
+      default: 0.0
