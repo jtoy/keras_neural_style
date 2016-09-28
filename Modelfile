@@ -1,5 +1,5 @@
 Inference:
-  command: python iNetwork.py
+  command: python INetwork.py
   parameters:
     --base_image_path:
       type: file
