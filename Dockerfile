@@ -1,2 +1,2 @@
 FROM gw000/keras-full
-RUN pip install pil
+RUN pip install Pillow
