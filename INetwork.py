@@ -25,11 +25,13 @@ THEANO_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/r
 TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
 
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
-parser.add_argument('base_image_path', metavar='base', type=str,
+parser.add_argument('--base_image_path', metavar='base', type=str,
                     help='Path to the image to transform.')
-parser.add_argument('style_reference_image_path', metavar='ref', type=str,
+parser.add_argument('--style_reference_image_path', metavar='ref', type=str,
                     help='Path to the style reference image.')
-parser.add_argument('result_prefix', metavar='res_prefix', type=str,
+parser.add_argument("--output", type=str,
+                    help='Path to save the result')
+parser.add_argument('--result_prefix', metavar='res_prefix', type=str,
                     help='Prefix for the saved results.')
 
 parser.add_argument("--image_size", dest="img_size", default=400, type=int, help='Output Image size')
@@ -391,8 +393,8 @@ for i in range(num_iter):
         print("Rescaling Image to (%d, %d)" % (img_WIDTH, img_HEIGHT))
         img = imresize(img, (img_WIDTH, img_HEIGHT), interp=args.rescale_method)
 
-    fname = result_prefix + "_at_iteration_%d.png" % (i + 1)
-    imsave(fname, img)
+    #fname = result_prefix + "_at_iteration_%d.png" % (i + 1)
+    #imsave(fname, img)
     end_time = time.time()
     print("Image saved as", fname)
     print("Iteration %d completed in %ds" % (i + 1, end_time - start_time))
@@ -402,3 +404,7 @@ for i in range(num_iter):
             print("Improvement (%f) is less than improvement threshold (%f). Early stopping script." %
                   (improvement, improvement_threshold))
             exit()
+if args.output == None:
+  args.output = "/data/output/"+ str(float(time.time())) + ".png"
+imsave(args.output, img)
+print(args.output)
