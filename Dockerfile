@@ -1,5 +1,5 @@
 FROM somatic/k802x
-
+RUN pip uninstall tensorflow
 # install debian packages
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq \
