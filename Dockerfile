@@ -29,7 +29,7 @@ RUN apt-get update -qq \
  && rm -rf /var/lib/apt/lists/*
 RUN pip uninstall -y tensorflow
 RUN pip install --upgrade numpy
-RUN pip install --upgrade scipys
+RUN pip --no-cache-dir install https://pypi.python.org/packages/72/41/44846a3c6f83b9d884f964d97b3cf4934078b65beecc741508d83613daa0/scipy-0.18.1-cp27-cp27m-manylinux1_x86_64.whl
 
 #RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_DEVICE}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
 RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
