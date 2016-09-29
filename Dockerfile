@@ -2,7 +2,7 @@ FROM somatic/k802x
 # install debian packages
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq \
- && apt-get upgrade -y\
+ && apt-get upgrade --force-yes -y\
  && apt-get install --no-install-recommends -y \
     # install essentials
     build-essential \
