@@ -27,6 +27,8 @@ RUN apt-get update -qq \
     python-matplotlib \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+RUN easy_install --upgrade numpy
+RUN easy_install --upgrade scipy
 RUN pip uninstall -y tensorflow
 ARG TENSORFLOW_VERSION=0.10.0
 ARG TENSORFLOW_DEVICE=gpu
