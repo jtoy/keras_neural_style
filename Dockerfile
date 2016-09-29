@@ -44,7 +44,7 @@ RUN dpkg-query -l > /dpkg-query-l.txt \
 
 WORKDIR /srv/
 
-RUN pip3 install Pillow
+RUN pip install Pillow
 RUN mkdir -p ~/.keras/models
 RUN cd ~/.keras/models \
  && wget https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_th_dim_ordering_th_kernels_notop.h5 \
