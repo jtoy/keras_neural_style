@@ -27,11 +27,10 @@ RUN apt-get update -qq \
     python-matplotlib \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
-RUN easy_install --upgrade numpy
-RUN easy_install --upgrade scipy
 RUN pip uninstall -y tensorflow
-ARG TENSORFLOW_VERSION=0.10.0
-ARG TENSORFLOW_DEVICE=gpu
+RUN pip install --upgrade numpy
+RUN pip install --upgrade scipys
+
 #RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_DEVICE}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
 RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
 
