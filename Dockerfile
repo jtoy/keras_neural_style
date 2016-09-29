@@ -10,7 +10,7 @@ RUN apt-get update -qq \
     python3-virtualenv \
     pkg-config \
     # requirements for numpy
-    libopenblas-base \
+
     python3-numpy \
     python3-scipy \
     # requirements for keras
