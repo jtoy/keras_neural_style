@@ -1,5 +1,5 @@
 FROM somatic/k802x
-
+FROM gw000/keras-full
 
 RUN pip install Pillow
 RUN mkdir -p ~/.keras/models
