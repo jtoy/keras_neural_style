@@ -32,7 +32,9 @@ RUN easy_install --upgrade scipy
 RUN pip uninstall -y tensorflow
 ARG TENSORFLOW_VERSION=0.10.0
 ARG TENSORFLOW_DEVICE=gpu
-RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_DEVICE}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
+#RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_DEVICE}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
+RUN pip --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+
 
 ARG KERAS_VERSION=1.1.0
 ENV KERAS_BACKEND=tensorflow
