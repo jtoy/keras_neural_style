@@ -1,13 +1,20 @@
 FROM somatic/k802x
 
+# install debian packages
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq \
  && apt-get install --no-install-recommends -y \
+    # install essentials
+    build-essential \
+    g++ \
+    git \
     # install python 3
     python3 \
     python3-dev \
     python3-pip \
     python3-setuptools \
     python3-virtualenv \
+    python3-wheel \
     pkg-config \
     # requirements for numpy
     libopenblas-base \
@@ -28,9 +35,15 @@ RUN pip3 --no-cache-dir install https://storage.googleapis.com/tensorflow/linux/
 
 ARG KERAS_VERSION=1.1.0
 ENV KERAS_BACKEND=tensorflow
-RUN pip3 --no-cache-dir install git+https://github.com/fchollet/keras.git@${KERAS_VERSION}
+RUN pip3 --no-cache-dir install --no-dependencies git+https://github.com/fchollet/keras.git@${KERAS_VERSION}
 
-RUN pip install Pillow
+# dump package lists
+RUN dpkg-query -l > /dpkg-query-l.txt \
+ && pip3 freeze > /pip3-freeze.txt
+
+WORKDIR /srv/
+
+RUN pip3 install Pillow
 RUN mkdir -p ~/.keras/models
 RUN cd ~/.keras/models \
  && wget https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_th_dim_ordering_th_kernels_notop.h5 \
